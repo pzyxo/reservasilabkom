@@ -93,7 +93,7 @@
             <h1 class="mb-3">Lab-or</h1>
             <h5 class="mb-4">Your trusted laboratorium reservation</h5>
             <a class="btn btn-outline-light btn-lg m-2" href="#takealook" role="button">Take A Look</a>
-            <a class="btn btn-outline-light btn-lg m-2" href="explore" target="_blank"
+            <a class="btn btn-outline-light btn-lg m-2" href="/admin/users" target="_blank"
               role="button">Explore</a>
           </div>
         </div>
