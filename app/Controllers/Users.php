@@ -3,6 +3,7 @@
 namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\UserModel;
+use App\Models\ReservasiModel;
 
 class Users extends BaseController
 {
@@ -19,17 +20,17 @@ class Users extends BaseController
             'list' => $userModel->findAll(),
             'page' => "users",
         ];
-        return view('user/users', $data);
+        return view('/admin/users', $data);
     }
     public function getdata(){
         if($this->request->isAJAX()){
-            $userModel = new UserModel();
+            $reservasiModel = new ReservasiModel();
             $data = [
-                'list' => $userModel->findAll(),
+                'list' => $reservasiModel->findAll(),
             ];
 
             $hasil = [
-                'data' => view('/user/list', $data)
+                'data' => view('/admin/list', $data)
             ];
             echo json_encode($hasil);
         } else {
@@ -37,10 +38,29 @@ class Users extends BaseController
         }
     }
 
+    public function detail($email){
+        $data = 
+        [
+            'page' => "admin",
+            'item' => $this->userModel->getDetail($email),
+        ];
+        return view('admin/detail', $data);
+    }
+
+    public function detailReservasi($email){
+        $reservasiModel = new ReservasiModel();
+        $data = 
+        [
+            'page' => "admin",
+            'item' => $reservasiModel->getDetail($email),
+        ];
+        return view('admin/detail', $data);
+    }
+
     public function getform(){
         if($this->request->isAJAX()){
             $hasil = [
-                'data' => view('user/form')
+                'data' => view('/admin/form')
             ];
             return $this->response->setJSON($hasil);
         } else {

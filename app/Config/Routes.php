@@ -38,8 +38,9 @@ $routes->set404Override();
 $routes->get('/', 'Home::index');
 $routes->get('/explore', 'Explore::index');
 $routes->get('/admin/users', 'Admin::Index');
+$routes->get('/admin/(:segment)', 'Users::detailReservasi/$1');
 $routes->get('/user/data', 'Users::getdata');
-$routes->get('/user/form', 'Users::getform');
+$routes->get('/admin/form', 'Users::getform');
 $routes->post('/user/insertAjax', 'Users::insertAjax');
 /*
  * --------------------------------------------------------------------

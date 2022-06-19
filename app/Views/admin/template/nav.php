@@ -8,7 +8,7 @@
             <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Main dashboard</span>
           </a>
           <a href="users" class="list-group-item list-group-item-action py-2 ripple <?= ($page == 'users'? 'active' : '')?>"><i
-              class="fas fa-users fa-fw me-3"></i><span>Users</span></a>
+              class="fas fa-users fa-fw me-3"></i><span>User's Log</span></a>
         </div>
       </div>
     </nav>

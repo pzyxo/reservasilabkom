@@ -1,13 +1,13 @@
-<button href="#" id="tambah" class="btn btn-rounded btn-success mb-3">Tambah Anggota</button>
+
 <p>
 <table id="datatabel" class="table table-bordered table-striped">
 		<thead>
 		    <tr>
 			    <th>No</th>
-				<th>Avatar</th>
-				<th>Username</th>
-				<th>Email</th>
-				<th>Aksi</th>
+				<th>Pemesan</th>
+				<th>Laboratorium</th>
+				<th>Status</th>
+				<th>Detail</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -16,11 +16,11 @@
 			foreach ($list as $item) { ?>
 				<tr>
 				    <td><?= $no++; ?></td>
-					<td><img src="images/<?= $item['avatar'] ?>" alt="" width="100px"></td>
-					<td><?= $item['name'] ?></td>
-					<td><?= $item['email'] ?></td>
+					<td><?= $item['userID'] ?></td>
+					<td><?= $item['labID'] == '1' ? 'RPL' : ( $item['labID'] == '2' ? 'Multimedia' : ( $item['labID'] == '3' ? 'Jaringan' : '' ) ) ?></td>
+					<td><img src="/img/icons/<?= $item['statusReservasi'] == 0 ? 'unverified' : 'verified' ?>.png" width="30"></td>
 					<td>
-						<a href="#" class="btn">Detail</a>
+						<a href="<?= base_url('admin/' . $item['userID']);?>" class="btn btn-success">Detail</a>
 					</td>
 				<?php } ?>
 		</tbody>
@@ -29,7 +29,7 @@
         $('#tambah').click(function(e) {
         e.preventDefault();
         $.ajax({
-            url: "<?= base_url('/user/form') ?>",
+            url: "<?= base_url('/admin/form') ?>",
             dataType: "json",
             success: function(response) {
                 $('#viewmodal').html(response.data).show();

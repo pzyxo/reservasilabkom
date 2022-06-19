@@ -4,18 +4,17 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class UserModel extends Model
+class ReservasiModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'user';
+    protected $table            = 'reservasi';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['nama', 'email', 'alamat', 'password', 'avatar', 'telepon', 'alamat'];
-
+    protected $allowedFields    = ['userID', 'civitas', 'labID', 'tanggal_reservasi', 'time_start', 'time_end', 'fasilitas'];
 
     // Dates
     protected $useTimestamps = false;
@@ -40,13 +39,12 @@ class UserModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
-    
+
     function getDetail($email = false)
     {
         if($email == false){
             return $this->findAll();
         }
-        return $this->where(['email' => $email])->first();
+        return $this->where(['userID' => $email])->first();
     }
 }
-
