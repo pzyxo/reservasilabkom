@@ -26,6 +26,7 @@
   <main style="margin-top: 58px">
     <?= $this->renderSection('home'); ?>
     <?= $this->renderSection('users'); ?>
+    <?= $this->renderSection('reservation'); ?>
   </main>
   <!--Main layout-->  
     <!-- Navbar -->
@@ -38,8 +39,17 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
   <script type="text/javascript" src="/admin/datatables/jquery.dataTables.min.js"></script>
   <script type="text/javascript" src="/admin/datatables/datatables.min.js"></script>
-  <script>
-		function tampilkan(){
+<script>
+  	function tampilkanReservation(){
+      $.ajax({
+        url: "<?= base_url('/admin/data') ?>",
+        dataType: "json",
+        success: function(response){
+          $('#viewdatares').html(response.data);
+          }
+      });
+	  }
+    function tampilkan(){
 			$.ajax({
 				url: "<?= base_url('/user/data') ?>",
 				dataType: "json",
@@ -48,15 +58,12 @@
 				}
 			});
 		}
-		
-		$(document).ready(function(){
-			tampilkan();
-		});
-	</script>
-  
-
-
-
+    <script>
+    $(document).ready(function(){
+        tampilkanReservation();
+    });
+</script>
+</script>
 </body>
 
 </html>

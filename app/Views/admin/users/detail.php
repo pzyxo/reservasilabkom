@@ -6,55 +6,48 @@
         <section class="mb-4">
             <div class="card">
                 <div class="card-header py-3">
-                    <h5 class="mb-0 text-center"><strong>Reservasi <?= $item['userID'] ?></strong></h5>
+                    <h5 class="mb-0 text-center"><strong>Reservasi <?= $item['email'] ?></strong></h5>
                 </div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-8">
                             <table class="table table-striped">
                                 <tr>
-                                    <td>ID Reservasi</td>
-                                    <td> <?= $item['id_reservasi'] ?></td>
+                                    <td>Nama</td>
+                                    <td> <?= $item['nama'] ?></td>
                                 </tr>
                                 <tr>
-                                    <td>Email Pemesan</td>
-                                    <td> <?= $item['userID'] ?></td>
+                                    <td>Email</td>
+                                    <td> <?= $item['email'] ?></td>
                                 </tr>
                                 <tr>
                                     <td>Civitas</td>
                                     <td> <?= $item['civitas'] ?></td>
                                 </tr>
-                                <tr>
-                                    <td>Laboratorium</td>
-									<td><?= $item['labID'] == '1' ? 'RPL' : ( $item['labID'] == '2' ? 'Multimedia' : ( $item['labID'] == '3' ? 'Jaringan' : '' ) ) ?></td>
-                                </tr>
 								<tr>
-									<td>Tanggal Reservasi</td>
-									<td> <?= $item['tanggal_reservasi'] ?></td>
+									<td>Telepon</td>
+									<td> <?= $item['telepon'] ?></td>
 								</tr>
 								<tr>
-									<td>Waktu Mulai Reservasi</td>
-									<td> <?= $item['time_start'] ?></td>
-								</tr>
-								<tr>
-									<td>Waktu Selesai Reservasi</td>
-									<td> <?= $item['time_end'] ?></td>
-								</tr>
-								<tr>
-									<td>Fasilitas</td>
-									<td> <?= $item['fasilitas'] ?></td>
+									<td>Alamat</td>
+									<td> <?= $item['alamat'] ?></td>
 								</tr>
 								<tr>
                                     <td>Status verifikasi</td>
-                                    <td><img src="/img/icons/<?= $item['statusReservasi'] == 0 ? 'unverified' : 'verified' ?>.png" width="30"></td>
+                                    <td><img src="/img/icons/<?= $item['status'] == 0 ? 'unverified' : 'verified' ?>.png" width="30"></td>
                                 </tr>
                             </table>
                         </div>
                         <div class="col-md-4">
                             
                             <div class="row mt-4">
+                                <div class="row">
+                                    <div class="col-md-8 offset-md-2 ">
+                                        <img src="/img/users/avatar/<?= $item['avatar'] ?>" alt="" width="100%">
+                                    </div>
+                                </div>
 								<?php
-								if($item['statusReservasi'] == '0'){
+								if($item['status'] == '0'){
 								?>
                                 <div class="col-md-6"><a href="#" class="btn btn-success btn-block">Verify</a></div>
 								<?php } ?>
@@ -71,8 +64,3 @@
 
     </div>
 <?= $this->endSection(); ?>
-    <script>
-        $(document).ready(function(){
-                $('#datatabel').DataTable();
-        });
-    </script>

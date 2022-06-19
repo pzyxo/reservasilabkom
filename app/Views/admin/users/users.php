@@ -1,11 +1,18 @@
+<?= $this->extend('admin/template/template'); ?>
 
-<p>
+<?= $this->section('users'); ?>
+<div class="row">
+<div class="col p-5">
+	<h1>User's Log</h1>
+	<div id="viewdata"></div>
+	<div id="viewmodal" style="display:none"></div>
+	<p>
 <table id="datatabel" class="table table-bordered table-striped">
 		<thead>
 		    <tr>
 			    <th>No</th>
-				<th>Pemesan</th>
-				<th>Laboratorium</th>
+				<th>Avatar</th>
+				<th>Nama</th>
 				<th>Status</th>
 				<th>Detail</th>
 			</tr>
@@ -16,11 +23,11 @@
 			foreach ($list as $item) { ?>
 				<tr>
 				    <td><?= $no++; ?></td>
-					<td><?= $item['userID'] ?></td>
-					<td><?= $item['labID'] == '1' ? 'RPL' : ( $item['labID'] == '2' ? 'Multimedia' : ( $item['labID'] == '3' ? 'Jaringan' : '' ) ) ?></td>
-					<td><img src="/img/icons/<?= $item['statusReservasi'] == 0 ? 'unverified' : 'verified' ?>.png" width="30"></td>
+					<td><img src="/img/users/avatar/<?= $item['avatar'] ?>" width="200"></td>
+					<td><?= $item['nama']?></td>
+					<td><img src="/img/icons/<?= $item['status'] == 0 ? 'unverified' : 'verified' ?>.png" width="30"></td>
 					<td>
-						<a href="<?= base_url('admin/' . $item['userID']);?>" class="btn btn-success">Detail</a>
+						<a href="<?= base_url('users/' . $item['email']);?>" class="btn btn-success">Detail</a>
 					</td>
 				<?php } ?>
 		</tbody>
@@ -42,3 +49,12 @@
                 $('#datatabel').DataTable();
         });
     </script>
+</div>	
+
+</div>
+<?= $this->endSection(); ?>
+<script>
+	$(document).ready(function(){
+		tampilkan();
+	});
+</script>

@@ -20,17 +20,17 @@ class Users extends BaseController
             'list' => $userModel->findAll(),
             'page' => "users",
         ];
-        return view('/admin/users', $data);
+        return view('/admin/users/users', $data);
     }
     public function getdata(){
         if($this->request->isAJAX()){
-            $reservasiModel = new ReservasiModel();
+            $userModel = new UserModel();
             $data = [
-                'list' => $reservasiModel->findAll(),
+                'list' => $userModel->findAll(),
             ];
 
             $hasil = [
-                'data' => view('/admin/list', $data)
+                'data' => view('/admin/users/users', $data)
             ];
             echo json_encode($hasil);
         } else {
@@ -41,20 +41,10 @@ class Users extends BaseController
     public function detail($email){
         $data = 
         [
-            'page' => "admin",
+            'page' => "users",
             'item' => $this->userModel->getDetail($email),
         ];
-        return view('admin/detail', $data);
-    }
-
-    public function detailReservasi($email){
-        $reservasiModel = new ReservasiModel();
-        $data = 
-        [
-            'page' => "admin",
-            'item' => $reservasiModel->getDetail($email),
-        ];
-        return view('admin/detail', $data);
+        return view('admin/users/detail', $data);
     }
 
     public function getform(){

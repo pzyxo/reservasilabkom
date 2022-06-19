@@ -37,10 +37,13 @@ $routes->set404Override();
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 $routes->get('/explore', 'Explore::index');
-$routes->get('/admin/users', 'Admin::Index');
-$routes->get('/admin/(:segment)', 'Users::detailReservasi/$1');
+$routes->get('/admin/users', 'Users::index');
+$routes->get('/admin/reservation', 'Admin::Index');
+$routes->get('/admin/(:segment)', 'Admin::detailReservasi/$1');
+$routes->get('/users/(:segment)', 'Users::detail/$1');
+$routes->get('/admin/data', 'Admin::getdata');
 $routes->get('/user/data', 'Users::getdata');
-$routes->get('/admin/form', 'Users::getform');
+$routes->get('/user/form', 'Users::getform');
 $routes->post('/user/insertAjax', 'Users::insertAjax');
 /*
  * --------------------------------------------------------------------
