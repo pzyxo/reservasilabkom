@@ -24,9 +24,9 @@
   <?= $this->include('admin/template/nav'); ?>
   <!--Main layout-->
   <main style="margin-top: 58px">
-    <?= $this->renderSection('home'); ?>
-    <?= $this->renderSection('users'); ?>
-    <?= $this->renderSection('reservation'); ?>
+  <?= $this->renderSection('home'); ?>
+  <?= $this->renderSection('users'); ?>
+  <?= $this->renderSection('reservation'); ?>
   </main>
   <!--Main layout-->  
     <!-- Navbar -->

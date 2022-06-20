@@ -58,6 +58,16 @@ class Users extends BaseController
         }
     }
 
+    public function login(){
+        $userModel = new UserModel();
+        $data =
+        [
+            'list' => $userModel->findAll(),
+            'page' => "login",
+        ];
+        return view('/login/login', $data);
+    }
+
     public function insertAjax(){
         $validasi = \Config\Services::validation();
         $valid = $this->validate([

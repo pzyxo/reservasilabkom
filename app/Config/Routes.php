@@ -45,6 +45,8 @@ $routes->get('/admin/data', 'Admin::getdata');
 $routes->get('/user/data', 'Users::getdata');
 $routes->get('/user/form', 'Users::getform');
 $routes->post('/user/insertAjax', 'Users::insertAjax');
+$routes->get('/login', 'Account::login');
+$routes->get('/register', 'Account::register');
 /*
  * --------------------------------------------------------------------
  * Additional Routing

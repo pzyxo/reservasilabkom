@@ -6,7 +6,7 @@
         <section class="mb-4">
             <div class="card">
                 <div class="card-header py-3">
-                    <h5 class="mb-0 text-center"><strong>Reservasi <?= $item['email'] ?></strong></h5>
+                    <h5 class="mb-0 text-center"><strong>Detail <?= $item['email'] ?></strong></h5>
                 </div>
                 <div class="card-body">
                     <div class="row">
