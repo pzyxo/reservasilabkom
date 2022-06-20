@@ -51,7 +51,6 @@
 								?>
                                 <div class="col-md-6"><a href="#" class="btn btn-success btn-block">Verify</a></div>
 								<?php } ?>
-                                <div class="col-md-6"><a href="#" class="btn btn-danger btn-block">Cancel</a></div>
                             </div>
                         </div>
 
