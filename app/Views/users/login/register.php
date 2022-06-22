@@ -80,6 +80,19 @@
                                         <div class="invalid-feedback" id="errortp"></div>
                                     </div>
                                 </div>
+                                <div class="mb-3">
+                                    <div class="row">
+                                        <div class="col-sm-6 mb-3 mb-sm-0">
+                                            <input type="file" id="pp" name="avatar" class="form-control" />
+                                            <div class="invalid-feedback" id="errorpp"></div>   
+                                        </div>
+                                        <div class="col-sm-6">
+                                            Foto Profil
+                                        </div>
+
+                                    </div>
+
+                                </div>
                                 <button type="submit" id="submit" class="btn btn-primary btn-user btn-block">
                                     Register Account
                                 </button>

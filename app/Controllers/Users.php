@@ -137,17 +137,17 @@ class Users extends BaseController
             if ($this->request->getFile('avatar')->getName() != '') {
                 $avatar = $this->request->getFile('avatar');
                 $namaavatar = $avatar->getRandomName();
-                $avatar->move(ROOTPATH . 'public/img/users/', $namaavatar);
+                $avatar->move(ROOTPATH . 'public/img/users/avatar/', $namaavatar);
             } else {
                 $namaavatar = 'default.png';
             }
 
             $input = [
                 'nama' => $nama,
-                'alamat' => $this->request->getVar('alamat'),
-                'telepon' => $this->request->getVar('telepon'),
+                'alamat' => $this->request->getVar('alamat'),                
                 'email' => $this->request->getVar('email'),
-                'password' => hash('sha256', $this->request->getVar('password')),
+                'telepon' => $this->request->getVar('telepon'),
+                'password' => md5($this->request->getVar('password')),
                 'civitas' => $this->request->getVar('civitas'),
                 'avatar' => $namaavatar
             ];
