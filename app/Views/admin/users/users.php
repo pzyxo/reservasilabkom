@@ -4,6 +4,7 @@
 <div class="row">
 <div class="col p-5">
 	<h1>User's Log</h1>
+	<strong style="color:red">Tet tot, admin jangan lupa untuk verifikasi akun baru ya</strong>
 	<div id="viewdata"></div>
 	<div id="viewmodal" style="display:none"></div>
 	<p>

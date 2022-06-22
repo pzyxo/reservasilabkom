@@ -1,0 +1,300 @@
+/*font-family: 'Montserrat', sans-serif;
+font-family: 'Lato', sans-serif;
+font-family: 'Open Sans', sans-serif;
+font-family: 'Dancing Script', cursive;
+font-family: 'Abel', sans-serif;
+font-family: 'Yellowtail', cursive;
+*/
+
+
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abel&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Yellowtail&display=swap');
+
+
+
+body {
+    padding: 0 5%;
+    margin: 0;
+}
+
+.index, .menu, .contact, .about {
+    background-color: black;
+}
+
+
+.navbar {
+    background-color: black;
+}
+
+.nav-item {
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    
+}
+
+.nav-link {
+    margin-right: 1em !important;
+    color: white !important;
+}
+
+
+.navbar-collapse {
+    justify-content: left;
+}
+
+.carousel-inner img {
+    width: auto;
+    height: 820px;
+  }
+  
+.container-fluid {
+    margin: 0;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.carousel-item {
+    justify-content: center;
+}
+
+.carousel-caption {
+    top: 65%;
+    font-size: 1em;
+    bottom: auto;
+}
+
+.carousel-indicators {
+    display: none;
+}
+
+
+
+.dish {
+    text-align: center;
+    padding-top: 3%;
+    color: white;
+    font-size: 2em;
+}
+
+.desc {
+    font-size: 25px;
+    color: grey;
+    text-align: center;
+    padding-top: 10%;
+    padding-bottom: 10%;
+}
+
+.features {
+    color: white;
+}
+
+.features img{
+    width: 100%;
+}
+
+.features {
+    margin: 4em auto;
+    padding: 1em;
+    position: relative;
+}
+
+.feature-title {
+    color: white;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.features img {
+    -webkit-box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+    margin-bottom: 16px;
+}
+
+.booking {
+    color: white;
+    text-align: center;
+    font-size: 20px;
+}
+
+p {
+    color: white;
+}
+
+.dish-view{
+    padding-top: 5%;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: black !important;
+    background-color: white;
+    
+}
+
+.infoo {
+    padding: 45% 15%;
+}
+
+.bout-cafe {
+    font-size: 18px;
+    text-align: left;
+    color: white;
+}
+
+.ikon {
+    margin-top: 35%;
+}
+
+.content-about {
+    margin-top: 15%;
+}
+
+@media (min-width: 1280px){
+    /*.navbar {
+        margin-top: 10px;
+        margin-left: 10px;
+        background-color: #acacac;
+        width: fit-content;
+        height: fit-content;
+        border-radius: 100px;
+        color: black;
+        padding: 0 5px;
+        border: 5px solid black;
+    }*/
+    .navbar {
+        background-color:black;
+    }
+
+    .carousel-inner img {
+        width: 100%;
+        height: 580px;
+      }
+     
+    .header {
+        padding-top: 5%;
+    }
+
+    .container-fluid {
+        margin: 0;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .demo {
+        padding-top: 0;
+    }
+
+    .carousel-caption {
+        top: 70%;
+        font-size: 1.5em;
+    }
+
+    .carousel-indicators {
+        display: flex;
+    }
+    
+    .nav-link {
+        font-size: 18px;
+    }
+
+    .nav-link:hover::after {
+        content: '';
+        display: block;
+        color: #000;
+        border-bottom: 3px solid white;
+        width: 60%;
+        margin: auto;
+        padding-bottom: 10px;
+        margin-bottom: -8px;
+        margin-top: -5px;
+        -webkit-transition: ease 0.4s;
+        transition: ease 0.4s;
+    }
+
+    .desc {
+        font-size: 50px;
+        padding-top: 10%;
+        padding-bottom: 10%;
+    }
+    
+    .on {
+        padding-bottom: 0;
+        margin-bottom: 0;
+        border-bottom: 3px solid white;
+        width: fit-content;
+    }
+
+    .description {
+        text-align: center;
+        font-size: 50px;
+        color: white;
+        padding-bottom: 5%;
+    }
+
+    .dish {
+        font-size: 5em;
+    }
+
+    /* MENU */
+    
+    .dish-view{
+        padding-top: 2%;
+    }
+
+    .wrapper {
+        margin: 0 auto;
+        width: fit-content;
+        height: fit-content;
+        border: 3px solid white;
+      }
+      
+      .zoom-effect {
+        position: relative;
+        width: 315px;
+        height: 315px;
+        margin: 0 auto;
+        overflow: hidden;
+      }
+      
+      .kotak {
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+      
+      .kotak img {
+        -webkit-transition: 0.4s ease;
+        transition: 0.4s ease;
+      }
+      
+      .zoom-effect:hover .kotak img {
+        -webkit-transform: scale(1.08);
+        transform: scale(1.08);
+      }
+
+      /* about */
+
+      .booking {
+            color: white;
+            text-align: left;
+            font-size: 40px;
+      }
+
+      .infoo {
+        padding: 5% 15%;
+      }
+
+      .content-about {
+        padding:5% 0; padding-right: 15%;
+        margin-top: 0;
+      }
+
+    
+
+    
+}

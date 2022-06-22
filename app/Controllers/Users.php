@@ -3,7 +3,6 @@
 namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\UserModel;
-use App\Models\ReservasiModel;
 
 class Users extends BaseController
 {
@@ -50,7 +49,7 @@ class Users extends BaseController
     public function getform(){
         if($this->request->isAJAX()){
             $hasil = [
-                'data' => view('/admin/form')
+                'data' => view('/login/form')
             ];
             return $this->response->setJSON($hasil);
         } else {
@@ -95,14 +94,6 @@ class Users extends BaseController
                     'numeric' => 'hanya isi {field} dengan angka']
             ],
 
-            'username' => [
-                'label' => 'Username',
-                'rules' => 'required|is_unique[user.username]',
-                'errors' => [
-                    'required' => '{field} tidak boleh kosong', 
-                    'is_unique' => '{field} sudah dipakai']
-            ],
-
             'password' => [
                 'label' => 'Password',
                 'rules' => 'required|min_length[8]',
@@ -135,7 +126,6 @@ class Users extends BaseController
                     'namadepan' => $validasi->getError('namadepan'),
                     'email' => $validasi->getError('email'),
                     'telepon' => $validasi->getError('telepon'),
-                    'username' => $validasi->getError('username'),
                     'password' => $validasi->getError('password'),
                     'password2' => $validasi->getError('password2'),
                     'avatar' => $validasi->getError('avatar')
@@ -147,21 +137,18 @@ class Users extends BaseController
             if ($this->request->getFile('avatar')->getName() != '') {
                 $avatar = $this->request->getFile('avatar');
                 $namaavatar = $avatar->getRandomName();
-                $avatar->move(ROOTPATH . 'public/images', $namaavatar);
+                $avatar->move(ROOTPATH . 'public/img/users/', $namaavatar);
             } else {
-                $namaavatar = 'images/default.png';
+                $namaavatar = 'default.png';
             }
 
             $input = [
                 'nama' => $nama,
                 'alamat' => $this->request->getVar('alamat'),
-                'tempat_lahir' => $this->request->getVar('tempatlahir'),
-                'tanggal_lahir' => $this->request->getVar('tanggallahir'),
-                'jenis_kelamin' => $this->request->getVar('jeniskelamin'),
                 'telepon' => $this->request->getVar('telepon'),
                 'email' => $this->request->getVar('email'),
-                'username' => $this->request->getVar('username'),
-                'password' => md5($this->request->getVar('password')),
+                'password' => hash('sha256', $this->request->getVar('password')),
+                'civitas' => $this->request->getVar('civitas'),
                 'avatar' => $namaavatar
             ];
             $this->userModel->save($input);

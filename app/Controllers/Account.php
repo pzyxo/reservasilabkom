@@ -6,11 +6,11 @@ class Account extends BaseController
 {
     public function login()
     {
-        return view('login/login');
+        return view('users/login/login');
     }
 
     public function register()
     {
-        return view('login/register');
+        return view('users/login/register');
     }
 }
