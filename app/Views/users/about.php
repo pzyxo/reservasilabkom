@@ -74,8 +74,8 @@
      <div class="row justify-content-center">
       <div class="col-lg-4 col-md-6 col-sm-12" style="text-align: left;">
         <center><h1>About Us</h1></center>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        <div class="dropdown-divider"></div>
+        LAB-OR merupakan saran yang dimiliki Universitas Sebelas Maret yang digunakan untuk menunjang pembelajara mahasiswa uns terkhusus dibidang teknologi informasi dan komunikasi. LAB-OR menyediakan tempat dan fasilitas bagi mahasiswa dan civitas dari Universitas Sebelas Maret maupun pihak diluar instansi UNS yang membutuhkan tempat dan fasilitas yang ada di lab-or guna mengadakan kelas, melakukan aktivitas praktikum, mengembangkan software, maupun uji kelayakan. Untuk dapat melakukan reservasi, lakukanlah pembuatan akun pada kolom regigstrasi. Untuk info lebih lanjut dapat hubungi kontak yang tertera pada halaman contact.
+          <div class="dropdown-divider"></div>
       </div>
       <div class="col-lg-4 col-md-6 col-sm-12">
         <h1>Location</h1>
