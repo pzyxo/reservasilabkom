@@ -197,66 +197,68 @@
         <div class="container" style="padding-top: 2%; border: 3px solid white;border-radius: 25px;">
           <center>
             <div class="row mb-5" style="margin: 1%;">
-              <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="col-lg-3 col-md-3 col-sm-3"></div>
+              <div class="col-lg-6 col-md-6 col-sm-6">
                 <h3 class="feature-title"><br>Cek Jadwal</h3>
                 <p>
-                  <a class="btn btn-outline-danger"><b>Cek Jadwal</b></a>
+                  <div id="viewmodal"></div>
+                  <a href="#" id="jadwal" onclick="jadwal()" class="btn btn-outline-danger btn-block">Jadwal</a>
                 </p>
-              </div>
-              <?php if(session()->get('loggedIn')){ ?>
-              <div class="col-lg-3 col-md-6 col-sm-12">
-                <h3 class="feature-title"><br>Pilih Labnya</h3>
-                <p>
-                <form class="user" id="form" action="users/reserve/" method="post" enctype="multipart/form-data">
-
+              </div><div class="col-lg-3 col-md-3 col-sm-3"></div>
+              <?php if (session()->get('loggedIn')) { ?>
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                  <h3 class="feature-title"><br>Pilih Labnya</h3>
+                  <p>
+                  <form class="user" id="form" action="users/reserve/" method="post" enctype="multipart/form-data">
+                    <?= csrf_field() ?>
+                    <div class="row justify-content-center">
+                      <div class="col-8">
+                        <select name="labID" class="form-control form-select form-select-lg" aria-label="Default select example">
+                          <option disabled selected>Laboratorium</option>
+                          <option value="1">Software's Engineering</option>
+                          <option value="2">Multimedia</option>
+                          <option value="3">Networking</option>
+                        </select>
+                      </div>
+                    </div>
+                    <input type="hidden" id="email" name="email" value="<?= $item['email'] ?>" />
+                    <input type="hidden" id="civitas" name="civitas" value="<?= $item['civitas'] ?>" />
+                    </p>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                  <h3 class="feature-title"><br>Pilih Tanggalnya</h3>
+                  <p>
                   <div class="row justify-content-center">
                     <div class="col-8">
-                      <select name="labID" class="form-control form-select form-select-lg" aria-label="Default select example">
-                        <option disabled selected>Laboratorium</option>
-                        <option value="1">Software's Engineering</option>
-                        <option value="2">Multimedia</option>
-                        <option value="3">Networking</option>
-                      </select>
+                      <input type="date" id="tanggalreservasi" name="tanggal_reservasi" class="form-control" />
                     </div>
                   </div>
-                  <input type="hidden" id="email" name="email" value="<?= $item['email'] ?>" />
-                  <input type="hidden" id="civitas" name="civitas" value="<?= $item['civitas'] ?>" />
                   </p>
-              </div>
-              <div class="col-lg-3 col-md-6 col-sm-12">
-                <h3 class="feature-title"><br>Pilih Tanggalnya</h3>
-                <p>
-                <div class="row justify-content-center">
-                  <div class="col-8">
-                    <input type="date" id="tanggalreservasi" name="tanggal_reservasi" class="form-control" />
-                  </div>
                 </div>
-                </p>
-              </div>
-              <div class="col-lg-3 col-md-6 col-sm-12">
-                <h3 class="feature-title"><br>Pilih Waktunya</h3>
-                <p>
-                <div class="row justify-content-center">
-                  <div class="col">
-                    <input type="time" id="timestart" name="time_start" class="form-control" value="07:00" min="07:00" max="21:00" />
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                  <h3 class="feature-title"><br>Pilih Waktunya</h3>
+                  <p>
+                  <div class="row justify-content-center">
+                    <div class="col">
+                      <input type="time" id="timestart" name="time_start" class="form-control" value="07:00" min="07:00" max="21:00" />
+                    </div>
+                    <div class="col">
+                      <input type="time" id="timeend" name="time_end" class="form-control" value="21:00" min="07:00" max="21:00" />
+                    </div>
                   </div>
-                  <div class="col">
-                    <input type="time" id="timeend" name="time_end" class="form-control" value="21:00" min="07:00" max="21:00" />
-                  </div>
+                  </p>
                 </div>
-                </p>
-              </div>
-              <div class="col-lg-3 col-md-6 col-sm-12">
-                <h3 class="feature-title"><br>Langsung Pesan</h3>
-                <p>
-                <div class="row justify-content-center">
-                  <div class="col-6">
-                    <button type="submit" id="submit" class="btn btn-primary btn-md btn-block">Pesan</button>
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                  <h3 class="feature-title"><br>Langsung Pesan</h3>
+                  <p>
+                  <div class="row justify-content-center">
+                    <div class="col-6">
+                      <button type="submit" id="submit" class="btn btn-primary btn-md btn-block">Pesan</button>
+                    </div>
                   </div>
+                  </form>
+                  </p>
                 </div>
-                </form>
-                </p>
-              </div>
               <?php } ?>
             </div>
           </center>
@@ -268,6 +270,16 @@
 
 </body>
 <script>
+  function jadwal() {
+        $.ajax({
+            url: "<?= base_url('/explore/jadwal/') ?>",
+            dataType: "json",
+            success: function(response) {
+                $('#viewmodal').html(response.data).show();
+                $('#jadwalmodal').modal('show');
+            }
+        });
+    };
   $(document).ready(function() {
     $('#form').submit(function(e) {
       e.preventDefault();

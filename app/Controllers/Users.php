@@ -11,40 +11,7 @@ class Users extends BaseController
     {
         $this->userModel = new UserModel();
     }
-    public function index()
-    {
-        $userModel = new UserModel();
-        $data =
-        [
-            'list' => $userModel->findAll(),
-            'page' => "users",
-        ];
-        return view('/admin/users/users', $data);
-    }
-    public function getdata(){
-        if($this->request->isAJAX()){
-            $userModel = new UserModel();
-            $data = [
-                'list' => $userModel->findAll(),
-            ];
-
-            $hasil = [
-                'data' => view('/admin/users/users', $data)
-            ];
-            echo json_encode($hasil);
-        } else {
-            exit("Data tidak dapat diload");
-        }
-    }
-
-    public function detail($id){
-        $data = 
-        [
-            'page' => "users",
-            'item' => $this->userModel->getDetail($id),
-        ];
-        return view('admin/users/detail', $data);
-    }
+    
 
     public function getform(){
         if($this->request->isAJAX()){
@@ -65,6 +32,32 @@ class Users extends BaseController
             'page' => "login",
         ];
         return view('/login/login', $data);
+    }
+
+    public function auth()
+    {
+        $session = session();
+        $email = $this->request->getVar('email');
+        $password = $this->request->getVar('password');
+        $userModel = new UserModel();
+        $otentik = $userModel->where('email', $email)->first();
+        if ($otentik) {
+            $pass = $otentik['password'];
+            $verifikasi = password_verify(md5($password), password_hash($pass, PASSWORD_DEFAULT));
+
+            if ($verifikasi) {
+                $sesi = [
+                    'email' => $otentik['email'],
+                    'id' => $otentik['id'],
+                    'loggedIn' => TRUE,
+                ];
+                $session->set($sesi);
+                return redirect()->to(base_url());
+            } else {
+                $session->setFlashdata('pesan', 'Email atau Password salah ya dek');
+                return redirect()->to(base_url('/signin'));
+            }
+        }
     }
 
     public function register(){

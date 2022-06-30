@@ -22,7 +22,7 @@
                     </div>
                     <div class="form-group">
                         <label for="em" class="form-label">Email</label>
-                        <input type="email" id="em" name="email" class="form-control" placeholder="<?= $email ?>" value="<?= $email ?>" />
+                        <input type="email" id="em" name="email" class="form-control" placeholder="<?= $email ?>" value="<?= $email ?>" disabled />
                         <div class="invalid-feedback" id="errorem"></div>
                     </div>
                     <div class="form-group row">
@@ -31,6 +31,7 @@
                             <input type="password" id="pw" name="password" class="form-control" placeholder="Password" />
                             <div class="invalid-feedback" id="errorpw"></div>
                         </div>
+                        <input type="hidden" id="email" name="email" value="<?= $email ?>" />
                         <input type="hidden" id="passlama" name="passlama" value="<?= $password ?>" />
                         <input type="hidden" id="avalama" name="avalama" value="<?= $avatar ?>" />
                     </div>

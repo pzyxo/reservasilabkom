@@ -17,19 +17,7 @@ class Account extends BaseController
         $this->reservasiModel = new ReservasiModel();
         $this->adminModel = new AdminModel();
     }
-    public function index()
-    {
-        $data =
-            [
-                'page' => "login",
-            ];
-        return view('users/login/login', $data);
-    }
 
-    public function register()
-    {
-        return view('users/login/register');
-    }
     public function success()
     {
         $data =
@@ -37,32 +25,6 @@ class Account extends BaseController
                 'page' => "success",
             ];
         return view('users/login/successAlert', $data);
-    }
-
-    public function auth()
-    {
-        $session = session();
-        $email = $this->request->getVar('email');
-        $password = $this->request->getVar('password');
-        $userModel = new UserModel();
-        $otentik = $userModel->where('email', $email)->first();
-        if ($otentik) {
-            $pass = $otentik['password'];
-            $verifikasi = password_verify(md5($password), password_hash($pass, PASSWORD_DEFAULT));
-
-            if ($verifikasi) {
-                $sesi = [
-                    'email' => $otentik['email'],
-                    'id' => $otentik['id'],
-                    'loggedIn' => TRUE,
-                ];
-                $session->set($sesi);
-                return redirect()->to(base_url());
-            } else {
-                $session->setFlashdata('pesan', 'Email atau Password salah ya dek');
-                return redirect()->to(base_url('/signin'));
-            }
-        }
     }
 
     public function logout()
@@ -73,7 +35,7 @@ class Account extends BaseController
         return redirect()->to(base_url());
     }
 
-    public function profile()
+    public function index()
     {
         $userModel = new UserModel();
         $idses = session()->get('id');
@@ -227,9 +189,12 @@ class Account extends BaseController
     public function reservation()
     {
         $validasi = \Config\Services::validation();
-
+        date_default_timezone_set('Asia/Jakarta');
+        $currentDate = strtotime(date('Y-m-d h:i:s'));
         $time_start = strtotime($this->request->getVar('time_start'));
         $time_end = strtotime($this->request->getVar('time_end'));
+        $tanggal_reservasi = strtotime($this->request->getVar('tanggal_reservasi') . " " . $this->request->getVar('time_start'));
+        $selisihHari = floor(($tanggal_reservasi - $currentDate) / (60));
         $durasi = floor(($time_end - $time_start) / (60));
         $valid = $this->validate([
             'email' => [
@@ -256,7 +221,7 @@ class Account extends BaseController
             ];
             return $this->response->setJSON($pesan);
         } else {
-            if ($durasi >= 30 && $durasi < 300 ) {
+            if ($durasi >= 30 && $durasi < 300 && $selisihHari > 1440 && $selisihHari < 20160) {
                 $civitas = $this->request->getVar('civitas');
                 if ($civitas == 'UNS') {
                     $biaya = $durasi * 0;

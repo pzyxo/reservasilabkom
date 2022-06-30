@@ -18,8 +18,18 @@ class Admin extends BaseController
         $this->reservasiModel = new ReservasiModel();
         $this->adminModel = new AdminModel();
     }
-
     public function index()
+    {
+        $userModel = new UserModel();
+        $data =
+        [
+            'list' => $userModel->findAll(),
+            'page' => "users",
+        ];
+        return view('/admin/users/users', $data);
+    }
+
+    public function reservation()
     {
         $reservasiModel = new ReservasiModel();
         $data =
@@ -30,7 +40,7 @@ class Admin extends BaseController
         return view('/admin/reservation/reservation', $data);
     }
 
-    public function getdata()
+    public function getReserv()
     {
         if ($this->request->isAJAX()) {
             $reservasiModel = new ReservasiModel();
@@ -57,6 +67,40 @@ class Admin extends BaseController
             ];
         return view('admin/reservation/detail', $data);
     }
+    public function users()
+    {
+        $userModel = new UserModel();
+        $data =
+        [
+            'list' => $userModel->findAll(),
+            'page' => "users",
+        ];
+        return view('/admin/users/users', $data);
+    }
+    public function getdata(){
+        if($this->request->isAJAX()){
+            $userModel = new UserModel();
+            $data = [
+                'list' => $userModel->findAll(),
+            ];
+
+            $hasil = [
+                'data' => view('/admin/users/users', $data)
+            ];
+            echo json_encode($hasil);
+        } else {
+            exit("Data tidak dapat diload");
+        }
+    }
+
+    public function detail($id){
+        $data = 
+        [
+            'page' => "users",
+            'item' => $this->userModel->getDetail($id),
+        ];
+        return view('admin/users/detail', $data);
+    }
 
     public function acceptUsers($id)
     {
@@ -72,6 +116,12 @@ class Admin extends BaseController
         return redirect()->to(base_url('/admin/users/'. $id));
     }
 
+    // status reservasi =
+    // 0 = pending
+    // 1 = disetujui
+    // 2 = dibatalkan
+    // 3 = selesai
+
     public function acceptReservation($reservasiID)
     {
         $input = [
@@ -83,5 +133,26 @@ class Admin extends BaseController
         return redirect()->to(base_url('/admin/reservation/' . $reservasiID));
     }
 
-    
+    public function cancelReservation($reservasiID)
+    {
+        $input = [
+            'statusReservasi' => 2,
+        ];
+        $this->reservasiModel->update($reservasiID, $input);
+        session()->setFlashdata('batalreservasi', 'Berhasil batalkan reservasi');
+        
+        return redirect()->to(base_url('/admin/reservation/' . $reservasiID));
+    }
+
+    public function finishReservation($reservasiID)
+    {
+        $input = [
+            'statusReservasi' => 3,
+        ];
+        $this->reservasiModel->update($reservasiID, $input);
+        session()->setFlashdata('finishreservasi', 'Berhasil selesaikan reservasi');
+        
+        return redirect()->to(base_url('/admin/reservation/' . $reservasiID));
+    }
+
 }

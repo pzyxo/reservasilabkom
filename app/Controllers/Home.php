@@ -28,6 +28,23 @@ class Home extends BaseController
         return view('users/explore', $data);
     }
 
+    public function jadwal()
+    {
+        $reservasiModel = new ReservasiModel();
+        if ($this->request->isAJAX()) {
+            $data = [
+                'list' => $reservasiModel->findAll(),
+            ];
+
+            $hasil = [
+                'data' => view('/users/explore/jadwal', $data)
+            ];
+            echo json_encode($hasil);
+        } else {
+            echo json_encode("Data tidak dapat diload");
+        }
+    }
+
     public function about()
     {
         $data =
@@ -37,13 +54,18 @@ class Home extends BaseController
         return view('users/about', $data);
     }
 
-    public function profile()
+    public function login()
     {
         $data =
-        [
-            'page' => "profile",
-        ];
-        return view('users/profile', $data);
+            [
+                'page' => "login",
+            ];
+        return view('users/login/login', $data);
+    }
+
+    public function register()
+    {
+        return view('users/login/register');
     }
 
 
