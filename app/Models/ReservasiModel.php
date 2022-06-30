@@ -14,7 +14,7 @@ class ReservasiModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['userID', 'civitas', 'labID', 'tanggal_reservasi', 'time_start', 'time_end', 'fasilitas'];
+    protected $allowedFields    = ['userID', 'civitas', 'labID', 'tanggal_reservasi', 'time_start', 'time_end', 'fasilitas', 'statusReservasi', 'biaya'];
 
     // Dates
     protected $useTimestamps = false;
@@ -40,11 +40,11 @@ class ReservasiModel extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 
-    function getDetail($email = false)
+    function getDetail($id = false)
     {
-        if($email == false){
+        if($id == false){
             return $this->findAll();
         }
-        return $this->where(['userID' => $email])->first();
+        return $this->where('id', $id)->first();
     }
 }

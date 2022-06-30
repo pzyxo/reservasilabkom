@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>LAB PTIK - Login</title>
+    <title>Lab-or - Login</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -17,10 +17,11 @@
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="script/style.css">
 
 </head>
 
-<body class="bg-gradient-primary">
+<body class="bg-gradient-dark">
 
     <div class="container">
 
@@ -33,38 +34,48 @@
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
                         <div class="row">
-                            <div class="col-lg-6 d-none d-lg-block" style="background: url(img/loginbg.png);/* background-attachment: inherit; */background-position: center; background-size:cover;">
+                            <div class="col-lg-6 d-none d-lg-block" style="background: url(<?= base_url('/images/fasilitas/logo.png')?>);/* background-attachment: inherit; */background-position: center; background-size:cover;">
                                 <!-- <img src="img/loginbg.png" style="width:100%;height: 100%;"> -->
                             </div>
                             <div class=" col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">SIGN IN</h1>
+                                        <?php if (session()->getFlashdata('pesan') != ''){?>
+                                            <div class="alert alert-danger" role="alert">
+                                                <?= session()->getFlashdata('pesan'); ?>
+                                            </div>
+                                        <?php } ?>
+                                        <?php if (session()->getFlashdata('suksesregis')){?>
+                                            <div class="alert alert-success" role="alert">
+                                                <?= session()->getFlashdata('suksesregis'); ?>
+                                            </div>
+                                        <?php } ?>
                                     </div>
-                                    <form class="user">
+                                    <form id="form" class="user validate-form" method="post" action="check" enctype="multipart/form-data">
+                                        <?= csrf_field() ?>
                                         <div class="form-group">
                                             <!-- <span class="far fa-user"></span> -->
-                                            <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address...">
+                                            <input type="email" class="form-control form-control-user" id="email" name="email" placeholder="Enter Email Address...">
                                         </div>
                                         <div class="form-group">
                                             <!-- <span class="fas fa-key"></span> -->
-                                            <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
+                                            <input type="password" class="form-control form-control-user" id="password" name="password" placeholder="Password">
                                         </div>
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
                                                 <input type="checkbox" class="custom-control-input" id="customCheck">
-                                                <label class="custom-control-label" for="customCheck">Remember
-                                                    Me</label>
+                                                <label class="custom-control-label" for="customCheck">Remember Me</label>
                                             </div>
                                         </div>
-                                        <a href="/home" class="btn btn-primary btn-user btn-block">
+                                        <button type="submit" class="btn btn-primary btn-user btn-block">
                                             Login
-                                        </a>
+                                        </button>
                                     </form>
 
                                     <hr>
                                     <div class="text-center">
-                                        <a class="small" href="forgot-password.html">Forgot Password?</a>
+                                        <a class="small" href="/forgot-password">Forgot Password?</a>
                                     </div>
                                     <div class="text-center">
                                         <a class="small" href="/register">Create an Account!</a>

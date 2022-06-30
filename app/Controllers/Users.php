@@ -37,11 +37,11 @@ class Users extends BaseController
         }
     }
 
-    public function detail($email){
+    public function detail($id){
         $data = 
         [
             'page' => "users",
-            'item' => $this->userModel->getDetail($email),
+            'item' => $this->userModel->getDetail($id),
         ];
         return view('admin/users/detail', $data);
     }
@@ -67,7 +67,7 @@ class Users extends BaseController
         return view('/login/login', $data);
     }
 
-    public function insertAjax(){
+    public function register(){
         $validasi = \Config\Services::validation();
         $valid = $this->validate([
             'namadepan' => [
@@ -151,6 +151,8 @@ class Users extends BaseController
                 'civitas' => $this->request->getVar('civitas'),
                 'avatar' => $namaavatar
             ];
+            
+            session()->setFlashdata('suksesregis', 'Register berhasil, silahkan login');
             $this->userModel->save($input);
             $pesan = [
                 'sukses' => 'Data anggota berhasil diinput'

@@ -37,16 +37,28 @@ $routes->set404Override();
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 $routes->get('/explore', 'Home::explore');
+$routes->get('/about', 'Home::about');
+$routes->get('/profile', 'Account::profile');
+$routes->post('/admin/signin', 'Account::admin');
 $routes->get('/admin/users', 'Users::index');
 $routes->get('/admin/reservation', 'Admin::Index');
-$routes->get('/admin/(:segment)', 'Admin::detailReservasi/$1');
-$routes->get('/users/(:segment)', 'Users::detail/$1');
+$routes->get('/admin/reservation/accept/(:segment)', 'Admin::acceptReservation/$1');
+$routes->get('/admin/reservation/(:segment)', 'Admin::detailReservasi/$1');
 $routes->get('/admin/data', 'Admin::getdata');
+$routes->get('/admin/users/accept/(:segment)', 'Admin::acceptUsers/$1');
+$routes->get('/admin/users/(:segment)', 'Users::detail/$1');
 $routes->get('/user/data', 'Users::getdata');
 $routes->get('/user/form', 'Users::getform');
-$routes->post('/user/insertAjax', 'Users::insertAjax');
-$routes->get('/login', 'Account::login');
+$routes->get('/users/form/(:segment)', 'Account::edit/$1');
+$routes->get('/users/reservation/(:segment)', 'Account::history/$1');
+$routes->put('/users/update/(:segment)', 'Account::update/$1');
+$routes->post('/user/register', 'Users::register');
+$routes->post('/users/reserve/', 'Account::reservation');
+$routes->get('/signin', 'Account::index');
 $routes->get('/register', 'Account::register');
+$routes->post('/check', 'Account::auth');
+$routes->get('/signout', 'Account::logout');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing

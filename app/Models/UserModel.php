@@ -41,12 +41,12 @@ class UserModel extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
     
-    function getDetail($email = false)
+    function getDetail($id = false)
     {
-        if($email == false){
+        if($id == false){
             return $this->findAll();
         }
-        return $this->where(['email' => $email])->first();
+        return $this->where(['id' => $id])->first();
     }
 }
 

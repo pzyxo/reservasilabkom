@@ -8,7 +8,7 @@
 	<div id="viewdata"></div>
 	<div id="viewmodal" style="display:none"></div>
 	<p>
-<table id="datatabel" class="table table-bordered table-striped">
+<table id="datatabel" class="table table-bordered table-striped pt-3" style="width:100%">
 		<thead>
 		    <tr>
 			    <th>No</th>
@@ -28,34 +28,17 @@
 					<td><?= $item['nama']?></td>
 					<td><img src="/img/icons/<?= $item['status'] == 0 ? 'unverified' : 'verified' ?>.png" width="30"></td>
 					<td>
-						<a href="<?= base_url('users/' . $item['email']);?>" class="btn btn-success">Detail</a>
+						<a href="<?= base_url('/admin/users/' . $item['id']);?>" class="btn btn-success">Detail</a>
 					</td>
 				<?php } ?>
 		</tbody>
 	</table>
-    <script>
-        $('#tambah').click(function(e) {
-        e.preventDefault();
-        $.ajax({
-            url: "<?= base_url('/admin/form') ?>",
-            dataType: "json",
-            success: function(response) {
-                $('#viewmodal').html(response.data).show();
-                $('#anggotamodal').modal('show');
-            }
-            });
-        });
-
-        $(document).ready(function(){
-                $('#datatabel').DataTable();
-        });
-    </script>
 </div>	
 
 </div>
-<?= $this->endSection(); ?>
 <script>
-	$(document).ready(function(){
-		tampilkan();
-	});
+	$(document).ready( function () {
+		$('#datatabel').DataTable();
+	} );
 </script>
+<?= $this->endSection(); ?>

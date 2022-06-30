@@ -25,7 +25,7 @@
         </button>
 
         <!-- Brand -->
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="<?= base_url('/')?>">
           <strong>Lab-or Admin Page</strong>
         </a>
         <!-- Search form -->
