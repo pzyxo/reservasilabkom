@@ -221,6 +221,7 @@
                         </select>
                       </div>
                     </div>
+                    <input type="hidden" id="status" name="status" value="<?= $item['status']?>" />
                     <input type="hidden" id="email" name="email" value="<?= $item['email'] ?>" />
                     <input type="hidden" id="civitas" name="civitas" value="<?= $item['civitas'] ?>" />
                     </p>
@@ -315,7 +316,25 @@
               icon: 'error',
               confirmButton: 'Iya'
             })
-          }
+          } else if (response.terisi) {
+            Swal.fire({
+              title: 'Error!',
+              text: 'Jadwal sudah terisi, silahkan pilih yang lain',
+              icon: 'error',
+              confirmButton: 'Pilih lagi'
+            })
+          } else if (response.status) {
+            Swal.fire({
+              title: 'Warning!',
+              text: 'Tunggu verifikasi akun dulu',
+              icon: 'warning',
+              confirmButton: 'Ok'
+            }).then((result) => {
+              if (result.isConfirmed) {
+                window.location = '<?= base_url('/profile') ?>';
+              }
+            })
+          } 
 
         },
       });

@@ -46,9 +46,18 @@ class Users extends BaseController
             $verifikasi = password_verify(md5($password), password_hash($pass, PASSWORD_DEFAULT));
 
             if ($verifikasi) {
+                $remember = $this->request->getVar('rememberme');
+                if(isset($remember)){
+                    $email = 'email';
+                    $nilai = $otentik['email'];
+                    $durasi = strtotime('+7 days');
+                    $path = "/";
+                    setcookie($email, $nilai, $durasi, $path);
+                }
                 $sesi = [
                     'email' => $otentik['email'],
                     'id' => $otentik['id'],
+                    'roles' => $otentik['roles'],
                     'loggedIn' => TRUE,
                 ];
                 $session->set($sesi);

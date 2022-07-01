@@ -7,7 +7,7 @@
 
         <div class="card">
             <div class="card-header py-3">
-                <h5 class="mb-0 text-center"><strong>Hello, <?= $item['nama'] ?></strong></h5>
+                <h5 class="mb-0 text-center"><strong>Hello, <?= session()->get('roles') ?></strong></h5>
             </div>
             <div class="card-body">
                 <div id="viewmodal"></div>

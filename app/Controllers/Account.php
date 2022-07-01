@@ -149,7 +149,6 @@ class Account extends BaseController
                     'email' => $validasi->getError('email'),
                     'telepon' => $validasi->getError('telepon'),
                     'password' => $validasi->getError('password'),
-                    'password2' => $validasi->getError('password2'),
                     'avatar' => $validasi->getError('avatar')
                 ]
             ];
@@ -163,7 +162,7 @@ class Account extends BaseController
             } else {
                 $namaavatar = $this->request->getVar('avalama');
             }
-            if ($this->request->getVar('password') != $this->request->getVar('passlama')) {
+            if (($this->request->getVar('password')) != '') {
                 $pass = md5($this->request->getVar('password'));
             } else {
                 $pass = $this->request->getVar('passlama');
@@ -221,30 +220,51 @@ class Account extends BaseController
             ];
             return $this->response->setJSON($pesan);
         } else {
-            if ($durasi >= 30 && $durasi < 300 && $selisihHari > 1440 && $selisihHari < 20160) {
-                $civitas = $this->request->getVar('civitas');
-                if ($civitas == 'UNS') {
-                    $biaya = $durasi * 0;
+            if ($this->request->getVar('status') == 1) {
+                if ($durasi >= 30 && $durasi < 300 && $selisihHari > 1440 && $selisihHari < 20160) {
+                    $civitas = $this->request->getVar('civitas');
+                    if ($civitas == 'UNS') {
+                        $biaya = $durasi * 0;
+                    } else {
+                        $biaya = $durasi * 1000;
+                    }
+                    $input = [
+                        'userID' => $this->request->getVar('email'),
+                        'labID' => $this->request->getVar('labID'),
+                        'civitas' => $civitas,
+                        'tanggal_reservasi' => $this->request->getVar('tanggal_reservasi'),
+                        'time_start' => $this->request->getVar('time_start'),
+                        'time_end' => $this->request->getVar('time_end'),
+                        'biaya' => $biaya,
+                    ];
+                    $labID = $this->request->getVar('labID');
+                    $tanggal = $this->request->getVar('tanggal_reservasi');
+                    $time_started = $this->request->getVar('time_start');
+                    $time_ended = $this->request->getVar('time_end');
+                    $db = db_connect();
+                    $query = "SELECT * FROM `reservasi` WHERE `labID`= $labID AND `tanggal_reservasi` = '$tanggal' AND `time_start` BETWEEN '$time_started' AND '$time_ended';";
+                    if (count($db->query($query)->getResult()) == 0) {
+
+                        $this->reservasiModel->save($input);
+                        $pesan = [
+                            'sukses' => 'Reservasi Berhasil'
+                        ];
+                        return $this->response->setJSON($pesan);
+                    } else {
+                        $pesan = [
+                            'terisi' => 'Jadwal sudah terisi',
+                        ];
+                        return $this->response->setJSON($pesan);
+                    }
                 } else {
-                    $biaya = $durasi * 1000;
+                    $pesan = [
+                        'gagal' => 'Reservasi Gagal, cek tanggal dan waktu reservasi'
+                    ];
+                    return $this->response->setJSON($pesan);
                 }
-                $input = [
-                    'userID' => $this->request->getVar('email'),
-                    'labID' => $this->request->getVar('labID'),
-                    'civitas' => $civitas,
-                    'tanggal_reservasi' => $this->request->getVar('tanggal_reservasi'),
-                    'time_start' => $this->request->getVar('time_start'),
-                    'time_end' => $this->request->getVar('time_end'),
-                    'biaya' => $biaya,
-                ];
-                $this->reservasiModel->save($input);
-                $pesan = [
-                    'sukses' => 'Reservasi Berhasil'
-                ];
-                return $this->response->setJSON($pesan);
             } else {
                 $pesan = [
-                    'gagal' => 'Reservasi Gagal, cek tanggal dan waktu reservasi'
+                    'status' => 'Tunggu verifikasi akun dulu'
                 ];
                 return $this->response->setJSON($pesan);
             }

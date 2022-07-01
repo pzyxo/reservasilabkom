@@ -28,7 +28,7 @@
                     <div class="form-group row">
                         <div class="col-sm-6 mb-3 mb-sm-0">
                             <label for="pw" class="form-label">Password</label>
-                            <input type="password" id="pw" name="password" class="form-control" placeholder="Password" />
+                            <input type="text" id="pw" name="password" class="form-control" placeholder="Password" />
                             <div class="invalid-feedback" id="errorpw"></div>
                         </div>
                         <input type="hidden" id="email" name="email" value="<?= $email ?>" />
@@ -46,7 +46,7 @@
                     <div class="form-group row">
                         <div class="col-sm-6 mb-3 mb-sm-0">
                             <label for="nb" class="form-label">Alamat</label>
-                            <input type="text" class="form-control form-control-user" name="alamat" id="al" placeholder="<?= $alamat ?>" value="<?= $alamat ?>" >
+                            <input type="text" class="form-control form-control-user" name="alamat" id="al" placeholder="<?= $alamat ?>" value="<?= $alamat ?>">
                         </div>
                         <div class="col-sm-6">
                             <label for="nb" class="form-label">Telepon</label>
@@ -77,55 +77,55 @@
 </body>
 <<script>
     $(document).ready(function() {
-        $('#form').submit(function(e) {
-            e.preventDefault();
-            $.ajax({
-                type: $(this).attr('method'),
-                url: $(this).attr('action'),
-                data: new FormData(this),
-                contentType: false,
-                processData: false,
-                beforeSend: function() {
-                    $('#submit').attr('disable', 'disabled');
-                    $('#submit').html('<i class="fa fa-spin fa-spinner"></i>');
-                },
-                complete: function() {
-                    $('#submit').removeAttr('disable');
-                    $('#submit').html('Update Data');
-                },
-                success: function(response) {
-                    if (response.error) {
-                        if (response.error.namadepan) {
-                            $('#nd').addClass('is-invalid');
-                            $('#errornd').html(response.error.namadepan);
-                        } else {
-                            $('#nd').removeClass('is-invalid');
-                            $('#errornd').html('');
-                        }
+    $('#form').submit(function(e) {
+    e.preventDefault();
+    $.ajax({
+    type: $(this).attr('method'),
+    url: $(this).attr('action'),
+    data: new FormData(this),
+    contentType: false,
+    processData: false,
+    beforeSend: function() {
+    $('#submit').attr('disable', 'disabled');
+    $('#submit').html('<i class="fa fa-spin fa-spinner"></i>');
+    },
+    complete: function() {
+    $('#submit').removeAttr('disable');
+    $('#submit').html('Update Data');
+    },
+    success: function(response) {
+    if (response.error) {
+    if (response.error.namadepan) {
+    $('#nd').addClass('is-invalid');
+    $('#errornd').html(response.error.namadepan);
+    } else {
+    $('#nd').removeClass('is-invalid');
+    $('#errornd').html('');
+    }
 
-                        if (response.error.namabelakang) {
-                            $('#nb').addClass('is-invalid');
-                            $('#errornb').html(response.error.namabelakang);
-                        } else {
-                            $('#nb').removeClass('is-invalid');
-                            $('#errornb').html('');
-                        }
-                    } else {
-                        Swal.fire({
-                                title: 'Berhasil!',
-                                text: 'Data berhasil diupdate',
-                                icon: 'success',
-                                confirmButton: 'Ok'
-                            }).then((result) => {
-                                if (result.isConfirmed) {
-                                    window.location = '<?= base_url('/profile') ?>';
-                                }
-                            })
-                    }
-                }
-            });
-        });
+    if (response.error.namabelakang) {
+    $('#nb').addClass('is-invalid');
+    $('#errornb').html(response.error.namabelakang);
+    } else {
+    $('#nb').removeClass('is-invalid');
+    $('#errornb').html('');
+    }
+    } else {
+    Swal.fire({
+    title: 'Berhasil!',
+    text: 'Data berhasil diupdate',
+    icon: 'success',
+    confirmButton: 'Ok'
+    }).then((result) => {
+    if (result.isConfirmed) {
+    window.location = '<?= base_url('/profile') ?>';
+    }
+    })
+    }
+    }
     });
-</script>
+    });
+    });
+    </script>
 
-</html>
+    </html>

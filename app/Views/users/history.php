@@ -25,7 +25,7 @@
                                 foreach ($list as $item) { ?>
                                     <tr>
                                         <td><?= $no++; ?></td>
-                                        <td><?= $item['tanggal_reservasi'] ?> : <?= $item['time_start'] ?> - <?= $item['time_end'] ?></td>
+                                        <td><?= $item['tanggal_reservasi'] ?> : <?= $item['time_start'] ?>-<?= $item['time_end'] ?></td>
                                         <td><?= $item['labID'] == '1' ? 'RPL' : ($item['labID'] == '2' ? 'Multimedia' : ($item['labID'] == '3' ? 'Jaringan' : '')) ?></td>
                                         <td><img src="/img/icons/<?php
 													$status = $item['statusReservasi'];

@@ -41,13 +41,13 @@ $routes->get('/', 'Home::index');
 $routes->get('/explore', 'Home::explore');
 $routes->get('/explore/jadwal', 'Home::jadwal');
 $routes->get('/about', 'Home::about');
-$routes->get('/signin', 'Home::login');
-$routes->get('/register', 'Home::register');
+$routes->get('/signin', 'Home::login', ["filter" => "authed"]);
+$routes->get('/register', 'Home::register', ["filter" => "authed"]);
 $routes->post('/check', 'Users::auth');
 $routes->post('/users/register', 'Users::register');
 
 // admin
-$routes->group('', ['filter' => 'auth'], function ($routes) {
+$routes->group('', ['filter' => 'admin'], function ($routes) {
     $routes->post('/admin', 'Admin::index');
     $routes->get('/admin/users', 'Admin::users');
     $routes->get('/admin/reservation', 'Admin::reservation');

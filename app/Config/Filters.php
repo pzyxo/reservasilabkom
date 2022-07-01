@@ -24,6 +24,10 @@ class Filters extends BaseConfig
         'invalidchars'  => InvalidChars::class,
         'secureheaders' => SecureHeaders::class,
         'auth'          => \App\Filters\Auth::class,
+        'authed'          => \App\Filters\Authed::class,
+        'admin'          => [\App\Filters\Admin::class, \App\Filters\Auth::class], 
+        'member'          => \App\Filters\Member::class,
+
     ];
 
     /**

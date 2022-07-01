@@ -9,7 +9,10 @@
             <a class="nav-link <?= ($page == '' ? 'on' : '') ?>" href="/">Home</a>
             <a class="nav-link <?= ($page == 'about' ? 'on' : '') ?>" href="/about">About</a>
             <a class="nav-link <?= ($page == 'explore' ? 'on' : '') ?>" href="/explore">Explore</a>
-            <a class="nav-link" href="/admin/users">Admin</a>
+            <?php if ((session()->get('roles') == 'admin')) { ?>
+              <a class="nav-link" href="/admin/users">Admin</a>
+            <?php } ?>
+
 
           </div>
 

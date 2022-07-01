@@ -6,7 +6,7 @@ use CodeIgniter\Filters\FilterInterface;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 
-class Auth implements FilterInterface
+class Admin implements FilterInterface
 {
     /**
      * Do whatever processing this filter needs to do.
@@ -25,14 +25,14 @@ class Auth implements FilterInterface
      */
     public function before(RequestInterface $request, $arguments = null)
     {
-        if (!session()->loggedIn)
+        if (!(session()->get('roles') == 'admin'))
 	    {
-	        return redirect()->to(base_url('/signin'));
+	        return redirect()->to(base_url('/'));
 	    }
     }
 
     public function after(RequestInterface $request, ResponseInterface $response, $arguments = null)
     {
-
+        //
     }
 }
