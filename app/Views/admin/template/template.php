@@ -14,7 +14,8 @@
   <link rel="stylesheet" href="/admin/css/mdb.min.css" />
   <!-- Custom styles -->
   <link rel="stylesheet" href="/admin/css/admin.css" />
-  <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" />
+  <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" />  
+  <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.2.3/css/buttons.dataTables.min.css" />
   <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.3.0/css/responsive.bootstrap.min.css" />
   <link rel="stylesheet" href="https://cdn.datatables.net/fixedheader/3.2.4/css/fixedHeader.bootstrap.min.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw==" crossorigin="anonymous"></script>
@@ -23,7 +24,7 @@
 <body>
   <?= $this->include('admin/template/nav'); ?>
 
-    <!-- Navbar -->
+  <!-- Navbar -->
   </header>
   <!--Main Navigation-->
   <!-- MDB -->
@@ -32,22 +33,24 @@
   <script type="text/javascript" src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
   <script type="text/javascript" src="/datatables/datatables.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.datatables.net/buttons/2.2.3/js/dataTables.buttons.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.html5.min.js"></script>
 
   <!--Main layout-->
 
- 
+
   <main style="margin-top: 58px">
-  <div class="container">
-    <div class="container-fluid">
-    <?= $this->renderSection('home'); ?>
-    <?= $this->renderSection('users'); ?>
-    <?= $this->renderSection('reservation'); ?>
+    <div class="container">
+      <div class="container-fluid">
+        <?= $this->renderSection('home'); ?>
+        <?= $this->renderSection('users'); ?>
+        <?= $this->renderSection('reservation'); ?>
+      </div>
     </div>
-  </div>
 
   </main>
 
-  <!--Main layout--> 
+  <!--Main layout-->
 </body>
 
 </html>

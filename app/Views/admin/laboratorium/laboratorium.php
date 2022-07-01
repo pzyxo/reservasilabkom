@@ -51,7 +51,18 @@
 </div>
 <script>
 	$(document).ready(function() {
-		$('#datatable').DataTable();
+		$('#datatable').DataTable({
+			buttons: [{
+				extend: 'csv',
+				text: 'Copy all data',
+				exportOptions: {
+					modifier: {
+						search: 'none'
+					}
+				}
+			}]
+		});
+
 	});
 </script>
 <?= $this->endSection(); ?>

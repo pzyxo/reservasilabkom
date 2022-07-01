@@ -38,7 +38,12 @@
 </div>
 <script>
 	$(document).ready( function () {
-		$('#datatabel').DataTable();
+		$('#datatabel').DataTable({
+			dom: 'Bfrtip',
+			buttons: [
+            'csvHtml5',
+        ]
+		});
 	} );
 </script>
 <?= $this->endSection(); ?>
