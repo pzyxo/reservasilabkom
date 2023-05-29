@@ -23,7 +23,7 @@
 						<td><?= $no++; ?></td>
 						<td><?= $item['userID'] ?></td>
 						<td><?= $item['labID'] == '1' ? 'RPL' : ($item['labID'] == '2' ? 'Multimedia' : ($item['labID'] == '3' ? 'Jaringan' : '')) ?></td>
-						<td><img src="/img/icons/<?php
+						<td><img src="<?= base_url('/img/icons/')?>/<?php
 													$status = $item['statusReservasi'];
 
 													switch ($status) {

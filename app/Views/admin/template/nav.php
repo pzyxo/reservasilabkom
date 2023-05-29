@@ -8,9 +8,7 @@
           <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>User's Account</span>
         </a>
         <a href="<?= base_url('/admin/reservation') ?>" class="list-group-item list-group-item-action py-2 ripple <?= ($page == 'reservation' ? 'active' : '') ?>"><i class="fas fa-users fa-fw me-3"></i><span>Reservation</span></a>
-        <a href="<?= base_url('/admin/laboratorium') ?>" class="list-group-item list-group-item-action py-2 ripple <?= ($page == 'laboratorium' ? 'active' : '') ?>"><i class="fas fa-users fa-fw me-3"></i><span>Laboratorium</span></a>
-        <a href="<?= base_url('/admin/facility') ?>" class="list-group-item list-group-item-action py-2 ripple <?= ($page == 'facility' ? 'active' : '') ?>"><i class="fas fa-users fa-fw me-3"></i><span>Facility</span></a>
-      </div>
+        </div>
     </div>
   </nav>
   <!-- Sidebar -->

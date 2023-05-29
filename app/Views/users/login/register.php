@@ -36,7 +36,7 @@
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">Gabung dengan Lab-or!</h1>
                             </div>
-                            <form class="user" id="form" action="users/register" method="post" enctype="multipart/form-data">
+                            <form class="user" id="form" action="<?= base_url('users/register')?>" method="post" enctype="multipart/form-data">
                                 <?= csrf_field() ?>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">

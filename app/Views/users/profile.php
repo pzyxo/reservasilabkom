@@ -7,7 +7,7 @@
 
         <div class="card">
             <div class="card-header py-3">
-                <h5 class="mb-0 text-center"><strong>Hello, <?= session()->get('roles') ?></strong></h5>
+                <h5 class="mb-0 text-center"><strong>Halo, <?= $item['nama']?></strong></h5>
             </div>
             <div class="card-body">
                 <div id="viewmodal"></div>
@@ -51,7 +51,7 @@
                     <div class="col-md-4 justify-content-center">
                         <div class="row">
                             <div class="col-md-8">
-                                <img style="width: 200px;" src="/img/users/avatar/<?= $item['avatar'] ?>" alt="">
+                                <img style="width: 200px;" src="<?= base_url('/img/users/avatar/'.$item['avatar']) ?>" alt="">
                             </div>
                         </div>
                         <div class="row mt-4">

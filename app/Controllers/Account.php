@@ -158,7 +158,7 @@ class Account extends BaseController
             if ($this->request->getFile('avatar')->getName() != '') {
                 $avatar = $this->request->getFile('avatar');
                 $namaavatar = $avatar->getRandomName();
-                $avatar->move(ROOTPATH . 'public/img/users/avatar', $namaavatar);
+                $avatar->move(zROOTPATH . 'public/img/users/avatar/', $namaavatar);
             } else {
                 $namaavatar = $this->request->getVar('avalama');
             }

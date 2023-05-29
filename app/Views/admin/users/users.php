@@ -24,7 +24,7 @@
 			foreach ($list as $item) { ?>
 				<tr>
 				    <td><?= $no++; ?></td>
-					<td><img src="/img/users/avatar/<?= $item['avatar'] ?>" width="100"></td>
+					<td><img src="<?= base_url('/img/users/avatar/' . $item['avatar']); ?>" width="100"></td>
 					<td><?= $item['nama']?></td>
 					<td><img src="/img/icons/<?= $item['status'] == 0 ? 'unverified' : 'verified' ?>.png" width="30"></td>
 					<td>

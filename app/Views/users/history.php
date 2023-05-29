@@ -16,7 +16,6 @@
                                     <th>Laboratorium</th>
                                     <th>Status</th>
                                     <th>Biaya</th>
-                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -44,14 +43,6 @@
 															echo "check";
 													}
 													?>.png" width="30"></td><td>Rp. <?= $item['biaya'] ?></td>
-                                        <td style="width:25%">
-                                            <div class="row justify-content-center">
-                                                <div class="col-lg-5 col-md-12 col-sm-12">
-                                                <a href="<?= base_url('admin/' . $item['userID']) ?>" class="btn btn-primary">Selesai</a>
-                                            </div><div class="col-lg-5 col-md-12 col-sm-12">
-                                                <a href="<?= base_url('admin/' . $item['userID']) ?>" class="btn btn-danger">Batalkan</a>
-                                            </div></div>
-                                        </td>
                                     <?php } ?>
                             </tbody>
                         </table>

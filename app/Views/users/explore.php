@@ -209,7 +209,7 @@
                 <div class="col-lg-3 col-md-6 col-sm-12">
                   <h3 class="feature-title"><br>Pilih Labnya</h3>
                   <p>
-                  <form class="user" id="form" action="users/reserve/" method="post" enctype="multipart/form-data">
+                  <form class="user" id="form" action="<?= base_url('/users/reserve/')?>" method="post" enctype="multipart/form-data">
                     <?= csrf_field() ?>
                     <div class="row justify-content-center">
                       <div class="col-8">
@@ -240,10 +240,10 @@
                   <h3 class="feature-title"><br>Pilih Waktunya</h3>
                   <p>
                   <div class="row justify-content-center">
-                    <div class="col">
+                    <div class="col col-6">
                       <input type="time" id="timestart" name="time_start" class="form-control" value="07:00" min="07:00" max="21:00" />
                     </div>
-                    <div class="col">
+                    <div class="col col-6">
                       <input type="time" id="timeend" name="time_end" class="form-control" value="21:00" min="07:00" max="21:00" />
                     </div>
                   </div>

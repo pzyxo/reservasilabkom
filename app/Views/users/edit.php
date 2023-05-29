@@ -6,7 +6,7 @@
                 <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form class="user" id="form" action="users/update/<?= $id ?>" method="post" enctype="multipart/form-data">
+                <form class="user" id="form" action="<?= base_url('users/update/<?= $id ?>')?>" method="post" enctype="multipart/form-data">
                     <input type="hidden" name="_method" value="PUT">
                     <?= csrf_field() ?>
                     <div class="form-group row">

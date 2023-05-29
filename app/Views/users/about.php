@@ -29,7 +29,7 @@
     <div class="desc">
       <div class="row justify-content-center">
         <center>
-          Looking for a <b>perfect</b> place?</center>
+          Looking for a <b>perfect</b> place for your activity?</center>
       </div>
       <div class="row justify-content-center">
         <center>
@@ -37,7 +37,7 @@
       </div>
       <div class="row justify-content-center">
         <center>
-          And <b>delicious</b> beverages and drinks?</center>
+          And <b>good</b> facilities?</center>
       </div>
     </div>
   </div>
@@ -62,7 +62,7 @@
           <div class="col-lg-4 col-md-6 col-sm-12">
             <br>
             <br>
-            <img src="images/logo-cafe2.png" class="img-fluid" width="70%">
+            <img src="images/icon/logo.png" class="img-fluid" width="70%">
           </div>
         </div>
       </center>
